@@ -24,17 +24,72 @@ A simple video editing tool. Test assignment for Erlyvideo. WIP.
 
 # Development
 
+### Building
+
+#### Build erlyeditor
+
+Running the `build` task will create both a CommonJS module-per-module build and a UMD build.
+```
+npm run build
+```
+
+To create just a CommonJS module-per-module build:
+```
+npm run build:lib
+```
+
+To create just a UMD build:
+```
+npm run build:umd
+npm run build:umd:min
+```
+
+### Testing and Linting
+
+To run both linting and testing at once, run the following:
+```
+npm run check
+```
+
+To only run tests:
+```
+npm run test
+```
+
+To continuously watch and run tests, run the following:
+```
+npm run test:watch
+```
+
+To perform linting with `eslint`, run the following:
+```
+npm run lint
+```
+
+### Examples
+
+Erlyeditor comes with examples to demonstrate its usage.
+When adding a new example, please adhere to the style and format of the existing examples, and try to reuse as much code as possible.
+
+#### Building and testing the examples
+
+To build and test the examples, run the following:
+
+```
+npm run build:examples
+npm run test:examples
+```
+
 For a smooth dev process you can install these tools (not required):
 
 * [greenkeeper](https://github.com/greenkeeperio/greenkeeper)
 * [npm-check-updates](https://github.com/tjunnone/npm-check-updates)
 * [nvm](https://github.com/creationix/nvm)
-* [node-foreman](https://github.com/strongloop/node-foreman)
 
 Updates are arriving automatically as PR's, thanks to [greenkeeper](http://greenkeeper.io/)
 If you want to check for updates manually: [npm-check-updates](https://github.com/tjunnone/npm-check-updates)
 
-In `dist` directory you can find webpack stats file named `webpack.stats.json` and
+After building in `dist` directory you can find webpack stats file named `webpack.stats.json` and
 feed it to [webpack stats analyzer](http://webpack.github.io/analyse/) to see
 some useful info about your bundle.
 
