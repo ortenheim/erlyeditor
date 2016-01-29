@@ -1,3 +1,9 @@
+[![badge 1](https://img.shields.io/badge/follows-npm%20checklist-brightgreen.svg)](CHECKLIST.md)
+[![Travis](https://travis-ci.org/vyorkin-personal/erlyeditor.svg)](https://travis-ci.org/vyorkin-personal/erlyeditor)
+[![Circle](https://circleci.com/gh/vyorkin-personal/erlyeditor.svg?style=svg)](https://circleci.com/gh/vyorkin-personal/erlyeditor)
+[![Dependency Status](https://david-dm.org/vyorkin-personal/erlyeditor.svg)](https://david-dm.org/vyorkin-personal/erlyeditor)
+[![devDependency Status](https://david-dm.org/vyorkin-personal/erlyeditor/dev-status.svg)](https://david-dm.org/vyorkin-personal/erlyeditor#info=devDependencies)
+
 # ErlyEditor
 
 A simple video editing tool. Test assignment for Erlyvideo. WIP.
@@ -13,6 +19,7 @@ A simple video editing tool. Test assignment for Erlyvideo. WIP.
 
 * `cp .example.env .env` and set required environment variables
 * `npm install`
+* install peer dependencies running `npm install react react-dom react-motion`
 * you have to `npm install` and build (`npm run build:lib`) modules that is pulled from github by yourself
 
 # Development
@@ -48,3 +55,14 @@ Packages I use for testing:
 * [sinon-chai](https://github.com/domenic/sinon-chai)
 * [enzyme](https://github.com/airbnb/enzyme)
 * [cheerio](https://github.com/cheeriojs/cheerio)
+
+# Resources
+
+Make sure that you've read this [npm-module-checklist](https://github.com/bahmutov/npm-module-checklist) before
+starting to build your own npm package.
+
+## Ideas
+
+Check this out: [react-gl](https://github.com/ProjectSeptemberInc/gl-react).
+[One of the examples](http://projectseptemberinc.github.io/gl-react-dom/Examples/VideoBlur/) places canvas over `video` to apply blurring and customize HUE.
+This technique makes possible to implement really cool effects.
