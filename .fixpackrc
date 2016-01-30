@@ -1,0 +1,42 @@
+module.exports = {
+  // will put these first in this order if present
+  sortToTop: [
+    'name',
+    'description',
+    'version',
+    'author'
+  ],
+
+  // will error if these not present
+  required: [
+    'name',
+    'version'
+  ],
+
+  // will warn if these not present
+  warn: [
+    'description',
+    'author',
+    'repository',
+    'keywords',
+    'main',
+    'bugs',
+    'homepage',
+    'license'
+  ],
+
+  // if `private: true` in package.json will use the next two lists instead
+  requiredOnPrivate: [],
+  warnOnPrivate: ['name', 'version', 'description', 'main'],
+
+  // sub items to sort by default
+  sortedSubItems: [
+    'keywords'
+  ],
+
+  // if you set quiet to true it won't do output anything to the console
+  quiet: false,
+
+  // files to scrub
+  files: ['package.json']
+}

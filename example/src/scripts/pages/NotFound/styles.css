@@ -1,0 +1,15 @@
+@import "variables";
+
+.page {
+  background-color: color(var(--background) shade(6%));
+}
+
+.title {
+  font-size: responsive 8rem 12rem;
+  color: #fff;
+  text-shadow:
+    0 1px 0 color(var(--text-color) tint(60%)),
+    0 2px 0 color(var(--text-color) tint(50%)),
+    0 5px 10px rgba(#000, 0.125),
+    0 10px 20px rgba(#000, 0.2);
+}

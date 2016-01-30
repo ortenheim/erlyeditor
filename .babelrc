@@ -6,9 +6,7 @@
   ],
   "plugins": [
     "transform-runtime",
-    "typecheck",
     "transform-decorators-legacy",
-    "add-module-exports",
-    "react-require"
+    "add-module-exports"
   ]
 }

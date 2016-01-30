@@ -39,7 +39,7 @@
         "_",
         "v", "x", "y", "z",
         "i", "j", "k",
-        "n",
+        "m", "n",
         "e", "c",
         "s", "a", "d",
         "f"
@@ -51,21 +51,12 @@
     "import/resolve": {
       "moduleDirectory": [
         "node_modules",
-        "src/scripts"
+        "src"
       ]
     }
   },
   "globals": {
     "React": true,
-    "ReactDOM": true,
-    "ReactDOMServer": true,
-    "Component": true,
-    "PropTypes": true,
-
-    "__TEST__": true,
-    "__DEVELOPMENT__": true,
-    "__PRODUCTION__": true,
-    "__ENVIRONMENT__": true,
     "__DEVTOOLS__": true
   }
 }

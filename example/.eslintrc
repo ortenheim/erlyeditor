@@ -1,0 +1,30 @@
+{
+  "extends": "../.eslintrc",
+  "settings": {
+    "import/parser": "babel-eslint",
+    "import/resolve": {
+      "moduleDirectory": [
+        "node_modules",
+        "src/scripts"
+      ]
+    }
+  },
+
+  "globals": {
+    "ReactDOM": true,
+    "ReactDOMServer": true,
+
+    "settings": true,
+
+    "__DEVELOPMENT__": true,
+    "__PRODUCTION__": true,
+    "__ENVIRONMENT__": true,
+    "__DEBUG__": true,
+    "__VERBOSE__": true,
+    "__PROFILE__": true,
+
+    "__CLIENT__": true,
+    "__SERVER__": true,
+
+  }
+}

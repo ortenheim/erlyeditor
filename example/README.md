@@ -1,9 +1,14 @@
-# Running examples
+# The basic example of using Erlyeditor.
 
-To run them locally, clone the repo, and run `npm install && npm start`. It will
-take a while to start, but after the site is built, you can access the examples
-by opening [http://localhost:3001/](http://localhost:3001/) and clicking
-“Examples” in the navigation bar.
+running:
+
+```
+npm i
+npm start
+```
+
+enjoy!
+
 
 # Resources
 
@@ -16,7 +21,6 @@ by opening [http://localhost:3001/](http://localhost:3001/) and clicking
 * [awesome redux](https://github.com/xgrommx/awesome-redux)
 * [redux docs](http://rackt.org/redux/)
 * [redux docs in russian](https://github.com/rajdee/redux-in-russian)
-* [npm module checklist](https://github.com/bahmutov/npm-module-checklist)
 * [react-router SSR](https://github.com/rackt/react-router/blob/master/docs/guides/advanced/ServerRendering.md)
 * [fullstack redux tutorial](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html)
 * [react redux styleguide](https://github.com/ghengeveld/react-redux-styleguide)

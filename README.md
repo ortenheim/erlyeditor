@@ -1,7 +1,11 @@
-[![badge 1](https://img.shields.io/badge/follows-npm%20checklist-brightgreen.svg)](CHECKLIST.md)
+[![follows npm checklist](https://img.shields.io/badge/follows-npm%20checklist-brightgreen.svg)](CHECKLIST.md)
+[![semantic release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 [![Travis](https://travis-ci.org/vyorkin-personal/erlyeditor.svg)](https://travis-ci.org/vyorkin-personal/erlyeditor)
 [![Circle](https://circleci.com/gh/vyorkin-personal/erlyeditor.svg?style=svg)](https://circleci.com/gh/vyorkin-personal/erlyeditor)
-[![Dependency Status](https://david-dm.org/vyorkin-personal/erlyeditor.svg)](https://david-dm.org/vyorkin-personal/erlyeditor)
+
+[![dependency Status](https://david-dm.org/vyorkin-personal/erlyeditor.svg)](https://david-dm.org/vyorkin-personal/erlyeditor)
 [![devDependency Status](https://david-dm.org/vyorkin-personal/erlyeditor/dev-status.svg)](https://david-dm.org/vyorkin-personal/erlyeditor#info=devDependencies)
 
 # ErlyEditor
@@ -13,6 +17,7 @@ A simple video editing tool. Test assignment for Erlyvideo. WIP.
 - [Prerequisites](#prerequisites)
 - [Development](#development)
 - [Testing](#testing)
+- [Examples](#examples)
 - [Resources](#resources)
 
 # Prerequisites
@@ -69,16 +74,17 @@ npm run lint
 ### Examples
 
 Erlyeditor comes with examples to demonstrate its usage.
-When adding a new example, please adhere to the style and format of the existing examples, and try to reuse as much code as possible.
+When adding a new example, please adhere to the style and format of the existing examples,
+and try to reuse as much code as possible.
 
 #### Building and testing the examples
 
-To build and test the examples, run the following:
+Clone the repo, cd to example you are interested in and
+run `npm install && npm start`. It will
+take a while to start, but after the site is built, you can access the examples
+by opening [http://localhost:3001/](http://localhost:3001/).
 
-```
-npm run build:examples
-npm run test:examples
-```
+#### Tools
 
 For a smooth dev process you can install these tools (not required):
 

@@ -1,0 +1,16 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Vasiliy Yorkin, @yorkin
+
+# THANKS
+     
+     Everyone!
+
+# TECHNOLOGY COLOPHON
+
+    es2015, webpack, babel,
+    react, redux,
+    lodash, postcss, etc

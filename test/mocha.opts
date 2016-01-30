@@ -1,0 +1,4 @@
+--compilers css:./test/compilers/noop,js:babel-core/register
+--require ./test/setup/mocha.js
+--reporter mocha-better-spec-reporter
+--recursive
