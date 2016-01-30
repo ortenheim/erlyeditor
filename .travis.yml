@@ -28,6 +28,8 @@ before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - npm prune
+  - npm install react react-motion invariant pr1ntr/redux redux-act reselect core-decorators lodash classnames
+  - cd node_modules/redux && npm install --ignore-scripts && npm run build:lib
 
 script:
   - npm run test
