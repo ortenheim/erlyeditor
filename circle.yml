@@ -6,4 +6,4 @@ dependencies:
   pre:
     - npm install -g npm@latest
     - npm install react react-motion invariant pr1ntr/redux redux-act redux-thunk reselect core-decorators lodash@4.0.1 classnames
-    - cd node_modules/redux && npm install && npm run build:lib
+    - cd ./node_modules/redux && npm install --ignore-scripts && npm run build:lib
