@@ -121,7 +121,7 @@
     "react": "^0.14.0",
     "react-motion": "^0.4.0",
     "invariant": "2.2.0",
-    "redux": "pr1ntr/redux",
+    "redux": "^3.1.0",
     "redux-act": "0.3.0",
     "redux-thunk": "1.0.3",
     "reselect": "2.0.2",

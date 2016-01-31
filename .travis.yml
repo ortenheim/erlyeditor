@@ -22,8 +22,7 @@ addons:
 
 before_install:
   - npm i -g npm@latest
-  - npm install react react-motion invariant pr1ntr/redux redux-act redux-thunk reselect core-decorators lodash@4.0.1 classnames
-  - cd ./node_modules/redux && npm install --ignore-scripts && npm run build:lib
+  - npm install react react-motion invariant redux redux-act redux-thunk reselect core-decorators lodash@4.0.1 classnames
 
 before_script:
   - npm prune

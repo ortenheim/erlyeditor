@@ -3,7 +3,7 @@ start:
 test:
 	npm test
 tdd:
-	npm test:watch
+	npm run test:watch
 build:
 	npm run build
 
