@@ -1,4 +1,5 @@
---compilers css:./test/compilers/noop,js:babel-core/register
+--compilers js:babel-core/register
+--require ignore-styles
 --require ./test/setup/mocha.js
 --reporter mocha-better-spec-reporter
 --recursive
