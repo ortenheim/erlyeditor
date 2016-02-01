@@ -21,66 +21,14 @@ const externals = {
     commonjs: 'react',
     amd: 'react'
   },
-  'react-motion': {
-    root: 'ReactMotion',
-    commonjs2: 'react-motion',
-    commonjs: 'react-motion',
-    amd: 'react-motion'
-  },
-  'react-css-modules': {
-    root: 'ReactCSSModules',
-    commonjs2: 'react-css-modules',
-    commonjs: 'react-css-modules',
-    amd: 'react-css-modules'
-  },
-  'redux': {
-    root: 'Redux',
-    commonjs2: 'redux',
-    commonjs: 'redux',
-    amd: 'redux'
-  },
-  'redux-act': {
-    root: 'ReduxAct',
-    commonjs2: 'redux-act',
-    commonjs: 'redux-act',
-    amd: 'redux-act'
-  },
-  'redux-thunk': {
-    root: 'ReduxThunk',
-    commonjs2: 'redux-thunk',
-    commonjs: 'redux-thunk',
-    amd: 'redux-thunk'
-  },
-  'reselect': {
-    root: 'Reselect',
-    commonjs2: 'reselect',
-    commonjs: 'reselect',
-    amd: 'reselect'
-  },
-  'invariant': {
-    root: 'Invariant',
-    commonjs2: 'invariant',
-    commonjs: 'invariant',
-    amd: 'invariant'
-  },
-  'classnames': {
-    root: 'ClassNames',
-    commonjs2: 'classnames',
-    commonjs: 'classnames',
-    amd: 'classnames'
-  },
-  'lodash': {
-    root: '_',
-    commonjs2: 'lodash',
-    commonjs: 'lodash',
-    amd: 'lodash'
-  },
-  'core-decorators': {
-    root: 'CoreDecorators',
-    commonjs2: 'core-decorators',
-    commonjs: 'core-decorators',
-    amd: 'core-decorators'
-  }
+  'react-motion': 'commonjs react-motion',
+  'redux': 'commonjs redux',
+  'redux-act': 'commonjs redux-act',
+  'redux-thunk': 'commonjs redux-thunk',
+  'reselect': 'commonjs reselect',
+  'classnames': 'commonjs classnames',
+  'lodash': 'commonjs lodash',
+  'core-decorators': 'commonjs core-decorators'
 };
 
 export default {

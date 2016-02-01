@@ -1,3 +1,4 @@
+@import "normalize.css";
 @import "typography";
 @lost gutter 10px;
 @lost cycle auto;
@@ -5,5 +6,5 @@
 
 html {
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 }

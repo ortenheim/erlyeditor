@@ -122,6 +122,8 @@ Packages I use for testing:
 Make sure that you've read this [npm-module-checklist](https://github.com/bahmutov/npm-module-checklist) before
 starting to build your own npm package.
 
+* [react-styleable](https://github.com/pluralsight/react-styleable) - React Component for portable styles.
+
 ## Ideas
 
 Check this out: [react-gl](https://github.com/ProjectSeptemberInc/gl-react).

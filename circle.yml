@@ -5,4 +5,3 @@ machine:
 dependencies:
   pre:
     - npm install -g npm@latest
-    - npm install react react-motion react-css-modules invariant redux redux-act redux-thunk reselect core-decorators lodash@4.0.1 classnames

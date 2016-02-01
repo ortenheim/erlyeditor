@@ -1,42 +1,37 @@
 import { autobind } from 'core-decorators';
 import React, { Component, PropTypes } from 'react';
-import css from 'react-css-modules';
+import styleable from 'react-styleable';
 
 import styles from './styles';
+
+const { number, object, func } = PropTypes;
 
 export class Counter extends Component {
   state = { count: this.props.count };
 
   static propTypes = {
-    count: PropTypes.number
+    count: number,
+    inc: func.isRequired,
+    dec: func.isRequired,
+    css: object.isRequired
   };
 
   static defaultProps = {
     count: 0
   };
 
-  @autobind
-  handleInc() {
-    this.setState({ count: this.state.count + 1 });
-  }
-
-  @autobind
-  handleDec() {
-    this.setState({ count: this.state.count - 1 });
-  }
-
   render() {
-    const { inc, dec } = this.props;
+    const { css, inc, dec } = this.props;
     const { count } = this.state;
 
     return (
-      <div styleName='counter'>
-        <span styleName='value'>{count}</span>
-        <button styleName='dec' onClick={this.handleInc}>+</button>
-        <button styleName='inc' onClick={this.handleDec}>-</button>
+      <div className={css.counter}>
+        <span className={css.value}>{count}</span>
+        <button className={css.inc} onClick={inc}>+</button>
+        <button className={css.dec} onClick={dec}>-</button>
       </div>
     );
   }
 }
 
-export default css(Counter, styles);
+export default styleable(styles)(Counter);

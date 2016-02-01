@@ -1,6 +1,7 @@
 @import "variables";
 
 .page {
+  composes: box from "styles/layout";
   background-color: color(var(--background) shade(6%));
 }
 

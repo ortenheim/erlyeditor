@@ -24,7 +24,7 @@ export default [
       paths.lib
     ],
     loader: ExtractTextPlugin.extract(
-      `css?minimize&${cssOptions.css}!postcss`,
+      `css?minimize&${cssOptions}!postcss`,
       extractOptions
     )
   },

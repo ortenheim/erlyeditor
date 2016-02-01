@@ -11,6 +11,7 @@
   },
 
   "globals": {
+    "React": true,
     "ReactDOM": true,
     "ReactDOMServer": true,
 

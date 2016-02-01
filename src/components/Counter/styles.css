@@ -1,8 +1,13 @@
 .counter {
+  margin: 0 auto;
+  width: 400px;
   color: #333;
+  font-size: 4rem;
 }
 
 .value {
+  color: red;
+  margin-right: 1rem;
 }
 .inc {
 }

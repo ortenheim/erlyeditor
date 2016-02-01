@@ -56,7 +56,6 @@
     }
   },
   "globals": {
-    "React": true,
     "__DEVTOOLS__": true
   }
 }

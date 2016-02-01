@@ -16,9 +16,6 @@ export default {
   icons: paths.assets.icons,
   images: paths.assets.images,
 
-  'sinon': 'sinon/pkg/sinon',
-
-  // prefer src to compiled version
   erlyeditor: paths.lib,
 
   ...scripts,

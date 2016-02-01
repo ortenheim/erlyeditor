@@ -1,13 +1,13 @@
-import css from 'react-css-modules';
+import styleable from 'react-styleable';
 import React, { Component } from 'react';
 
 import styles from './styles';
 
-@css(styles)
+@styleable(styles)
 export default class Dummy extends Component {
   render() {
     return (
-      <div styleName='dummy'>
+      <div className={this.props.css.dummy}>
         <h1>{'SUP DAWG'}</h1>
       </div>
     );

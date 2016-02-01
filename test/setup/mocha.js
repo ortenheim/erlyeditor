@@ -1,7 +1,10 @@
 import path from 'path';
 import { addPath } from 'app-module-path';
 import { jsdom } from 'jsdom';
-import { expect, should } from 'chai';
+import chai, { expect, should } from 'chai';
+import chaiEnzyme from 'chai-enzyme'
+
+chai.use(chaiEnzyme());
 
 // read about some other solutions here:
 // https://gist.github.com/branneman/8048520
@@ -12,13 +15,19 @@ addPath(path.resolve(__dirname, '../../src'));
 global.expect = expect;
 should();
 
-global.document = jsdom('<html><body></body></html>');
-global.window = document.defaultView;
+jsdom.env({
+  html: '<html><body></body></html>',
+  done: (error, window) => {
+    if (error) console.error(error);
 
-// take all properties of the window object and also attach it to the 
-// mocha global object
-propagateToGlobal(global.window);
+    global.window = window;
+    propagateToGlobal(window);
+  }
+});
 
+// take all properties of the window object
+// and also attach it to the mocha global object
+//
 // from mocha-jsdom https://github.com/rstacruz/mocha-jsdom/blob/master/index.js#L80
 // useful to be able to write smth like
 // navigator.userAgent.indexOf('Chrome') > -1

@@ -1,4 +1,4 @@
-import paths from '../../../config/paths';
+import { paths, resolve } from '../../../config';
 import { cssOptions } from '../../utils';
 
 export default [
@@ -35,15 +35,7 @@ export default [
     ],
     query: {
       presets: [
-        'es2015',
-        'stage-0',
-        'react',
-        'react-hmre'
-      ],
-      plugins: [
-        'transform-runtime',
-        'transform-decorators-legacy',
-        'add-module-exports'
+        resolve.modules('babel-preset-react-hmre')
       ]
     }
   }
