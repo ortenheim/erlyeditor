@@ -1,0 +1,22 @@
+:root {
+}
+
+.options {
+}
+
+.button {
+}
+
+.buttonOn {
+  composes: button;
+  color: #4cb6cb;
+}
+
+.buttonOff {
+  composes: button;
+  color: rgba(#000, 0.26);
+}
+
+.buttonFullScreen {
+  composes: button;
+}

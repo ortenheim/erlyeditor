@@ -1,2 +1,2 @@
-export { default as Dummy } from './components/Dummy';
-export { default as Counter } from './components/Counter';
+export { default as Player } from './components/Player';
+export { default as playerReducer } from './modules/player';

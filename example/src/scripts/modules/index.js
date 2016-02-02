@@ -1,11 +1,15 @@
 import { combineReducers } from 'redux';
 import { routeReducer as routing } from 'react-router-redux';
+import { playerReducer as player } from 'erlyeditor';
 
 // every module should export a reducer as a default in index.js
 
 const pattern = /^\.\/([a-z]+)\/index\.js$/i;
 const appReducers = require.context('./', true, /^\.\/([a-z]+)\/index\.js$/i);
-const vendorReducers = { routing };
+const vendorReducers = {
+  routing,
+  player
+};
 
 // HACK: have to use '.default' because of babel 6
 // and the way I export my reducers with redux-act.

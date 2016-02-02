@@ -25,6 +25,11 @@
 
     "react/jsx-no-undef": 0,
     "react/react-in-jsx-scope": 0,
+    "react/jsx-closing-bracket-location": 0,
+    "react/jsx-pascal-case": 0,
+    "react/jsx-no-bind": [1, {
+      "ignoreRefs": true
+    }],
 
     "no-undef": 2,
     "no-unused-vars": [2, {
@@ -41,7 +46,7 @@
         "i", "j", "k",
         "m", "n",
         "e", "c",
-        "s", "a", "d",
+        "r", "s", "a", "d",
         "f"
       ]
     }],

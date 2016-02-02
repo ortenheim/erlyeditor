@@ -3,16 +3,10 @@ import { cssOptions, paths } from '../utils';
 export default [
   {
     test: /\.css$/,
-    include: [paths.modules],
-    loaders: [
-      'style',
-      'css?importLoaders=1',
-      'postcss'
-    ]
-  },
-  {
-    test: /\.css$/,
-    include: [paths.src],
+    include: [
+      paths.modules,
+      paths.src
+    ],
     loaders: [
       'style',
       `css?${cssOptions}`,

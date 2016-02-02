@@ -1,0 +1,18 @@
+:root {
+  --player-background: #000;
+  --player-text-color: #e8eff0;
+}
+
+.player {
+  position: relative;
+  background-color: var(--player-background);
+  color: var(--player-text-color);
+}
+
+.video {
+  size: 100%;
+
+  &:focus {
+    outline: 1px dotted var(--player-text-color);
+  }
+}

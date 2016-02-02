@@ -1,15 +1,9 @@
 import path from 'path';
 import stylelint from 'stylelint';
 
-const reporters = () => [
-  require('postcss-reporter'),
-  require('postcss-browser-reporter')
-];
-
 export default (bundler) => [
   require('postcss-import')({
-    addDependencyTo: bundler,
-    path: [path.resolve('../../node_modules')]
+    addDependencyTo: bundler
   }),
   require('precss'),
   require('postcss-cssnext')({
@@ -27,13 +21,6 @@ export default (bundler) => [
   require('postcss-color-rgba-fallback'),
   require('postcss-input-style'),
   require('postcss-quantity-queries'),
-  require('postcss-responsive-type')({
-    minSize: '1rem',
-    maxSize: '2rem',
-    minWidth: '22.5rem',
-    maxWidth: '85.375rem',
-    rootSize: '1rem'
-  }),
 
   stylelint({
     configFile: path.resolve(__dirname, '../../stylelint.config.js'),
@@ -42,5 +29,9 @@ export default (bundler) => [
   }),
 
   ...(process.env.NODE_ENV === 'production' ? require('cssnano') : []),
-  ...reporters()
+
+  require('postcss-reporter'),
+  require('postcss-browser-reporter')({
+    selector: 'body:before'
+  })
 ];

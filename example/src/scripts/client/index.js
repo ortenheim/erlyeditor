@@ -18,11 +18,12 @@ function run() {
   ReactDOM.render(component, container);
 
   if (!__PRODUCTION__) {
-    window.React = React;
-
     if (__DEVELOPMENT__ && __CLIENT__) {
       window.appDebug = require('debug');
       window.appDebug.enable('app:*');
+
+      window.React = React;
+      window.store = store;
     }
 
     if (__PROFILE__) {

@@ -1,4 +1,6 @@
 import path from 'path';
+import debug from 'debug';
+import { render as prettyjson } from 'prettyjson';
 
 import { name } from '../../package';
 
@@ -9,10 +11,12 @@ import plugins from './plugins';
 const noParse = [
 ];
 
-const aliases = {
+const alias = {
   // see https://github.com/airbnb/enzyme/issues/47#issuecomment-162529926
-  'sinon': 'sinon/pkg/sinon'
+  sinon: 'sinon/pkg/sinon'
 };
+
+debug('module:webpack:aliases')(prettyjson(alias));
 
 const externals = {
   'react': {
@@ -23,6 +27,7 @@ const externals = {
   },
   'react-motion': 'commonjs react-motion',
   'redux': 'commonjs redux',
+  'react-redux': 'commonjs react-redux',
   'redux-act': 'commonjs redux-act',
   'redux-thunk': 'commonjs redux-thunk',
   'reselect': 'commonjs reselect',
@@ -41,6 +46,7 @@ export default {
   resolve: {
     root: path.resolve(__dirname, '../..'),
     modulesDirectories: ['node_modules'],
+    alias,
     extensions: [
       '',
       '.js',

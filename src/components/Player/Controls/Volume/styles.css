@@ -1,0 +1,65 @@
+:root {
+  --color-dark: #232c32;
+  --color-light: #e8eff0;
+  --color-value: #4cb6cb;
+
+  --container-width: 5rem;
+  --container-background: color(var(--color-dark) shade(15%));
+
+  --button-width: var(--container-width);
+  --button-height: 3.6rem;
+
+  --bar-border-color: color(var(--color-light) shade(40%));
+  --volume-text-color: var(--color-light);
+  --value-background: linear-gradient(to bottom, var(--color-value) 0, color(var(--color-value) shade(30%)) 100%);
+}
+
+.volume {
+  color: var(--volume-text-color);
+}
+
+.container {
+  position: absolute;
+  bottom: var(--button-height);
+  right: 0;
+  width: var(--container-width);
+  z-index: 1001;
+  background: var(--container-background);
+  border-radius: 2px 2px 0 0;
+}
+
+.bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  border-top: 1px solid var(--bar-border-color);
+  border-bottom: 1px solid var(--bar-border-color);
+  cursor: pointer;
+}
+
+.value {
+  width: 8px;
+  margin-left: -4px;
+  bottom: 0;
+  top: 50%;
+  background: var(--value-background);
+  position: absolute;
+}
+
+.button {
+  width: var(--button-width);
+}
+
+.toggleButton {
+  composes: button;
+}
+
+.setToMaxButton {
+  composes: button;
+}
+
+.setToMinButton {
+  composes: button;
+}

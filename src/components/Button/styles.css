@@ -1,0 +1,98 @@
+:root {
+  --button-font-family: "Roboto";
+  --button-padding: 0.2rem 1rem;
+  --button-height: 3.6rem;
+  --button-squared-border-radius: 2px;
+  --button-font-size: 1.4rem;
+
+  --button-normal-background: #232c32;
+  --button-normal-text-color: #e8eff0;
+
+  --button-hover-background: color(var(--button-normal-background) tint(5%));
+
+  --button-disabled-background: color(var(--button-normal-background) a(12%));
+  --button-disabled-text-color: color(var(--button-normal-text-color) a(26%));
+}
+
+.button {
+  display: inline-block;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  padding: var(--button-padding);
+  height: var(--button-height);
+  text-align: center;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  font-weight: 500;
+  border: 0;
+  outline: none;
+
+  &:hover { background-color: var(--button-hover-background); }
+}
+
+.enabled {
+  composes: button;
+  cursor: pointer;
+  background-color: var(--button-normal-background);
+  color: var(--button-normal-text-color);
+}
+
+.disabled {
+  composes: button;
+  pointer-events: none;
+  cursor: auto;
+  background-color: var(--button-disabled-background);
+  color: var(--button-disabled-text-color);
+}
+
+.neutral {
+}
+
+.squared {
+  composes: neutral;
+  border-radius: var(--button-squared-border-radius);
+}
+
+.rounded {
+  composes: neutral;
+  border-radius: 50%;
+  box-shadow:
+    0 1px 1.5px 0 rgba(#000, 0.12),
+    0 1px 1px 0 rgba(#000, 0.24);
+}
+
+.flat {
+}
+
+.raised {
+  box-shadow:
+    0 2px 2px 0 rgba(#000, 0.14),
+    0 3px 1px -2px rgba(#000, 0.2),
+    0 1px 5px 0 rgba(#000, 0.12);
+}
+
+.small {
+}
+
+.normal {
+}
+
+.big {
+}
+
+.content {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon {
+  composes: content;
+}
+
+.label {
+  composes: content;
+}

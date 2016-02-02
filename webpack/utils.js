@@ -9,8 +9,7 @@ export const localIdentName = isProduction ?
 export const cssOptions = `modules&importLoaders=1&localIdentName=${localIdentName}`;
 export const paths = {
   modules: path.resolve(__dirname, '../node_modules'),
-  src: path.resolve(__dirname, '../src'),
-  test: path.resolve(__dirname, '../test')
+  src: path.resolve(__dirname, '../src')
 };
 
 export function addHash(template, hash) {

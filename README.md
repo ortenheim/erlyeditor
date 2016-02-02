@@ -27,6 +27,20 @@ A simple video editing tool. Test assignment for Erlyvideo. WIP.
 * install peer dependencies running `npm install react react-dom react-motion`
 * you have to `npm install` and build (`npm run build:lib`) modules that is pulled from github by yourself
 
+# Usage
+
+#### Roboto Font and Material Design Icons
+
+ErlyEditor assumes that you are importing Roboto Font and Material Design Icons.
+In order to import the fonts for you, we'd need to include them in the CSS which is considered a bad practice.
+If you are not including them in your app go to the linked sites and follow the instructions.
+
+#### Customization
+
+Almost any component allows use to specify className which will be applied to it
+via composition with existing built-in className. Additionally you can override
+built-in styles because everything is based on the [react-styleable](https://github.com/pluralsight/react-styleable).
+
 # Development
 
 ### Building

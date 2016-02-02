@@ -20,7 +20,5 @@ export default {
   },
 
   eslintrc: resolve.root('.eslintrc'),
-  stylelintConfig: resolve.root('stylelint.config.js'),
-
-  lib: resolve.root('../src')
+  stylelintConfig: resolve.root('stylelint.config.js')
 }
