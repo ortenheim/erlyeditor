@@ -2,6 +2,12 @@ import path from 'path';
 import stylelint from 'stylelint';
 
 export default (bundler) => [
+  stylelint({
+    configFile: path.resolve(__dirname, '../../stylelint.config.js'),
+    files: [path.resolve(__dirname, '../../src/**/*.css')],
+    ignoreFiles: [path.resolve(__dirname, '../../node_modules/**/*.css')]
+  }),
+
   require('postcss-import')({
     addDependencyTo: bundler
   }),
@@ -21,12 +27,6 @@ export default (bundler) => [
   require('postcss-color-rgba-fallback'),
   require('postcss-input-style'),
   require('postcss-quantity-queries'),
-
-  stylelint({
-    configFile: path.resolve(__dirname, '../../stylelint.config.js'),
-    files: [path.resolve(__dirname, '../../src/**/*.css')],
-    ignoreFiles: [path.resolve(__dirname, '../../node_modules/**/*.css')]
-  }),
 
   ...(process.env.NODE_ENV === 'production' ? require('cssnano') : []),
 
