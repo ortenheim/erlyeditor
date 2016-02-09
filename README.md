@@ -170,6 +170,8 @@ npm run lint
 
 ### Examples
 
+![player UI](https://raw.githubusercontent.com/vyorkin-personal/erlyeditor/master/docs/screens/player.png)
+
 Erlyeditor comes with examples to demonstrate its usage.
 When adding a new example, please adhere to the style and format of the existing examples,
 and try to reuse as much code as possible.
@@ -220,6 +222,7 @@ Make sure that you've read this [npm-module-checklist](https://github.com/bahmut
 starting to build your own npm package.
 
 * [react-css-modules](https://github.com/gajus/react-css-modules) - Seamless mapping of class names to CSS modules inside of React components.
+* [react-hotkeys](https://github.com/Chrisui/react-hotkeys) + [exploring-hotkeys-and-focus-in-react](http://chrispearce.co/exploring-hotkeys-and-focus-in-react/)
 
 ## Ideas
 
@@ -227,9 +230,11 @@ Check this out: [react-gl](https://github.com/ProjectSeptemberInc/gl-react).
 [One of the examples](http://projectseptemberinc.github.io/gl-react-dom/Examples/VideoBlur/) places canvas over `video` to apply blurring and customize HUE.
 This technique makes possible to implement really cool effects.
 
+
 ### Implementing FlashVideo component
 
-To get some inspiration how to create a unified API for HTML5 & Flash player see
+To get some inspiration how to create a unified API for HTML5 & Flash player see:
+
 * [videojs](https://github.com/videojs/video.js)
 * [video-js-swf](https://github.com/videojs/video-js-swf)
 * [video-js-swf external interface](https://github.com/videojs/video-js-swf/blob/eca37f3bc78bb1e3915b036a5714b3caec5dd0a3/src/VideoJS.as#L68)
