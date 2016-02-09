@@ -31,9 +31,9 @@ A simple video editing tool. Test assignment for Erlyvideo. WIP.
 
 #### Intro
 
- `erlyeditor` primarily consists of two things:
- * Redux reducers: `playerReducer` and `html5videoReducer`.
- * React components: `Html5Video` and `Player`.
+ `erlyeditor` primarily consists of two things: components and reducers.
+ * top-level Redux reducers: `editorReducer`, `playerReducer` and `html5videoReducer`.
+ * top-level React components: `Editor`, `Player` and `Html5Video`.
 
 The reducers listen to dispatched actions from the component to maintain your state in Redux.
 
@@ -78,12 +78,14 @@ do this simple `import { QuxComponent } from 'erlyeditor/components/QuxComponent
 
 #### Components
 
-Also you can use other components as well:
+Also you can use other components as well. Here is the full list:
 
 * `Html5Video`
 * `Player`
+* `Icon`
 * `Button`
 * `Slider`
+* `hoc/Tooltip` - high-order component for tooltips
 
 Every component is exported in 2 different ways:
 * To import *unstyled* version use `import { FooComponent } from erlyeditor`
