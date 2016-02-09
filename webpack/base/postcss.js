@@ -20,7 +20,6 @@ export default (bundler) => [
     }
   }),
   require('postcss-size'),
-  require('postcss-focus'),
   require('postcss-position'),
   require('postcss-easings'),
   require('postcss-hexrgba'),

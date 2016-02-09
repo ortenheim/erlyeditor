@@ -1,22 +1,25 @@
 import React, { PropTypes } from 'react';
-import styleable from 'react-styleable';
+import css from 'react-css-modules';
 import cn from 'classnames';
 
 import styles from './styles';
 
-const { string, object, any } = PropTypes;
+const { bool, string, any } = PropTypes;
 
 export const Icon = (props) => {
   const {
     children,
-    css,
     className,
     value,
+    small,
+    big,
     ...other
   } = props;
 
+  const styleName = small ? 'small' : big ? 'big' : 'normal';
+
   return (
-    <span className={cn(className, css.icon)} {...other}>
+    <span { ...{ ...{ className, styleName }, ...other } }>
       {value}
       {children}
     </span>
@@ -25,9 +28,15 @@ export const Icon = (props) => {
 
 Icon.propTypes = {
   children: any,
-  css: object.isRequired,
   className: string,
+  small: bool,
+  big: bool,
   value: string.isRequired
 };
 
-export default styleable(styles)(Icon);
+Icon.defaultProps = {
+  small: false,
+  big: false
+};
+
+export default css(Icon, styles, { allowMultiple: true });

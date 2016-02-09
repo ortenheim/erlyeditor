@@ -13,5 +13,4 @@ export default {
   assets: true,
   errorDetails: true,
   children: false
-}
-
+};

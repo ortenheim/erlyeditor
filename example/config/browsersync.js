@@ -30,6 +30,7 @@ export default (argv) => {
     open: false,
 
     startPath: '/',
+    interval: 500,
     reloadOnRestart: true,
     reloadDebounce: 100,
     injectChanges: true,

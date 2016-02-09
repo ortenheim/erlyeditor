@@ -32,6 +32,7 @@ const query = {
   image: { url: { prefix: 'images/', name, limit } }
 };
 
+/* eslint-disable max-len */
 export default [
   { test: /\.json(\?.+)?$/, loader: 'json' },
   { test: /\.(jpe?g|png|gif)(\?.+)?$/i, query: query.image.url, ...loader.image.url },
@@ -40,4 +41,5 @@ export default [
   { test: /\.ttf(\?.+)?$/, query: { mimetype: 'application/octet-stream', ...query.font.url }, ...loader.font.url },
   { test: /\.eot(\?.+)?$/, query: query.font, ...loader.font.file },
   { test: /\.svg(\?.+)?$/, include: [paths.modules, paths.scripts], loader: 'svg-inline' }
-]
+];
+/* eslint-enable max-len */

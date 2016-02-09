@@ -1,22 +1,40 @@
 import React, { PropTypes } from 'react';
-import styleable from 'react-styleable';
+import css from 'react-css-modules';
 
+import PlaybackRate from './PlaybackRate';
+import Time from './Time';
+
+import { videoStateType } from '../../propTypes';
 import styles from './styles';
 
-const { object } = PropTypes;
+const { bool, number, string } = PropTypes;
 
 export const HUD = (props) => {
-  const { css } = props;
+  const {
+    className,
+    error,
+    focused,
+    currentTime,
+    duration,
+    playbackRate
+  } = props;
 
   return (
-    <div className={css.hud}>
+    <div className={className} styleName='hud'>
+      {!error && focused && <Time { ...{ currentTime, duration } } />}
+      {!error && focused && <PlaybackRate value={playbackRate} />}
     </div>
   );
 };
 
 
 HUD.propTypes = {
-  css: object.isRequired
+  className: string,
+  error: videoStateType,
+  focused: bool,
+  currentTime: number,
+  duration: number,
+  playbackRate: number
 };
 
-export default styleable(styles)(HUD);
+export default css(HUD, styles, { allowMultiple: true });

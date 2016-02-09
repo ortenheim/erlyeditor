@@ -1,14 +1,8 @@
 :root {
-  --controls-background: rgba(#000, 0.8);
-  --controls-height: 3.6rem;
+  --controls-background: rgba(#232c32, 0.8);
 }
 
 .controls {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   display: flex;
-  height: var(--controls-height);
   background-color: var(--controls-background);
 }

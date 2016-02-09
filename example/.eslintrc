@@ -11,6 +11,12 @@
   },
 
   "globals": {
+    "gulp": true,
+    "config": true,
+    "prettyjson": true,
+    "logger": true,
+    "paths": true,
+
     "React": true,
     "ReactDOM": true,
     "ReactDOMServer": true,
@@ -25,7 +31,6 @@
     "__PROFILE__": true,
 
     "__CLIENT__": true,
-    "__SERVER__": true,
-
+    "__SERVER__": true
   }
 }

@@ -5,14 +5,11 @@
 
 .player {
   position: relative;
+  user-select: none;
   background-color: var(--player-background);
   color: var(--player-text-color);
 }
 
-.video {
-  size: 100%;
-
-  &:focus {
-    outline: 1px dotted var(--player-text-color);
-  }
+.container {
+  position: relative;
 }

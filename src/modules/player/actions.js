@@ -1,9 +1,7 @@
-import { createAction } from 'redux-act';
+import { createAction as action } from 'redux-act';
 
-export const togglePlay = createAction('player.togglePlay', playing => ({ playing }));
-export const stop = createAction('player.stop');
-export const next = createAction('player.next', id => ({ id }));
-export const previous = createAction('player.prev', id => ({ id }));
+const mapIdentity = id => ({ id });
 
-export const updateTime = createAction('player.updateTime', currentTime => ({ currentTime }));
-export const seek = createAction('player.seek', currentTime => ({ currentTime }));
+export const toggleDebugMonitor = action('player.toggleDebugMonitor');
+export const previous = action('player.prev', mapIdentity);
+export const next = action('player.next', mapIdentity);

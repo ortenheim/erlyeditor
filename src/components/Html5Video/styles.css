@@ -1,0 +1,8 @@
+.video {
+  size: 100%;
+  display: block;
+
+  &:focus {
+    outline: 1px dotted #e8eff0;
+  }
+}

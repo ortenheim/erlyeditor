@@ -20,7 +20,7 @@ export default merge(common, {
     path: config.paths.dist,
     filename: 'server.js',
     library: 'ExampleServer',
-    libraryTarget: 'commonjs2',
+    libraryTarget: 'commonjs2'
   },
 
   // disable node mocks & polyfills
@@ -30,6 +30,6 @@ export default merge(common, {
     process: false,
     Buffer: false,
     __filename: false,
-    __dirname: false,
-  },
+    __dirname: false
+  }
 });

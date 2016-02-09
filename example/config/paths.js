@@ -21,4 +21,4 @@ export default {
 
   eslintrc: resolve.root('.eslintrc'),
   stylelintConfig: resolve.root('stylelint.config.js')
-}
+};

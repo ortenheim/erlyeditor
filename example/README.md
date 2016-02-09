@@ -29,7 +29,6 @@ enjoy!
 
 * [css modules](https://github.com/css-modules/css-modules), [icss (interoperable css)](https://github.com/css-modules/icss)
 * [webpack css-laoder css modules](https://github.com/webpack/css-loader#css-modules)
-* [react-styleable](https://github.com/pluralsight/react-styleable) - If you want to override this React Component's styles as the consumer, you should take a look at README of this package.
 * [react-css-modules](https://github.com/gajus/react-css-modules)
 * [gajus/react-css-modules-examples](https://github.com/gajus/react-css-modules-examples)
 * [css-modules/webpack-demo](https://github.com/css-modules/webpack-demo)

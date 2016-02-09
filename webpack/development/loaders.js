@@ -16,6 +16,6 @@ export default [
   {
     test: /\.js$/,
     loader: 'babel',
-    include: [paths.src],
+    include: [paths.src]
   }
-]
+];

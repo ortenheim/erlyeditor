@@ -30,6 +30,7 @@
     "react/jsx-no-bind": [1, {
       "ignoreRefs": true
     }],
+    "react/sort-comp": 0,
 
     "no-undef": 2,
     "no-unused-vars": [2, {
@@ -61,6 +62,8 @@
     }
   },
   "globals": {
-    "__DEVTOOLS__": true
+    "__DEVTOOLS__": true,
+    "__DEVELOPMENT__": true,
+    "__PRODUCTION__": true
   }
 }

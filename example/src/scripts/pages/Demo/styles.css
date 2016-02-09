@@ -1,2 +1,13 @@
 .root {
+  composes: box from "styles/layout";
+  background-color: #000;
+}
+
+.pad {
+  margin: 2em;
+}
+
+.fill {
+  background-color: #555;
+  color: #fff;
 }

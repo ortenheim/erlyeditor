@@ -1,42 +1,51 @@
 import React, { PropTypes } from 'react';
-import styleable from 'react-styleable';
+import css from 'react-css-modules';
 import cn from 'classnames';
 
 import Icon from '../Icon';
 import styles from './styles';
 
-const { bool, string, object, node } = PropTypes;
+const { bool, string, func, node } = PropTypes;
 
 export const Button = (props) => {
   const {
     children,
-    css,
     className,
     iconClassName,
     labelClassName,
     label,
     icon,
     disabled,
-    neutral,
+    filled,
+    circle,
     rounded,
     small,
     big,
     ...other
   } = props;
 
-  const shape = rounded ? css.rounded : neutral ? css.neutral : css.squared;
-  const size = small ? css.small : big ? css.big : css.normal;
+  const shape = circle ? 'circle' : rounded ? 'rounded' : 'squared';
+  const size = small ? 'small' : big ? 'big' : 'normal';
+  const state = disabled ? 'disabled' : 'enabled';
+  const fill = filled ? 'filled' : 'neutral';
 
-  const rootClass = cn(
-    className,
-    disabled ? css.disabled : css.enabled,
-    shape, size
-  );
+  const styleName = cn('button', state, fill, shape, size);
+  const known = { styleName, className, disabled };
 
   return (
-    <button className={rootClass} disabled={disabled} {...other}>
-      {icon && <Icon className={cn(iconClassName, css.icon)} value={icon} />}
-      {label && <span className={cn(labelClassName, css.label)}>{label}</span>}
+    <button { ...{ ...known, ...other } } styles={undefined}>
+      {icon &&
+        <Icon className={cn(iconClassName, styles.icon)}
+          { ...{ small, big } }
+          value={icon}
+        />
+      }
+      {label &&
+        <span className={labelClassName}
+          styleName='label'>
+          {label}
+        </span>
+      }
       {children}
     </button>
   );
@@ -44,7 +53,6 @@ export const Button = (props) => {
 
 Button.propTypes = {
   children: node,
-  css: object.isRequired,
   className: string,
   iconClassName: string,
   labelClassName: string,
@@ -52,7 +60,8 @@ Button.propTypes = {
   label: string,
   icon: string,
   disabled: bool,
-  neutral: bool,
+  filled: bool,
+  circle: bool,
   rounded: bool,
   small: bool,
   big: bool
@@ -60,10 +69,11 @@ Button.propTypes = {
 
 Button.defaultProps = {
   disabled: false,
-  neutral: true,
+  filled: false,
+  circle: false,
   rounded: false,
   small: false,
   big: false
 };
 
-export default styleable(styles)(Button);
+export default css(Button, styles, { allowMultiple: true });

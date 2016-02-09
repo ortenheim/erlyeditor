@@ -25,7 +25,7 @@ export default {
       '.js',
       '.css',
       '.json'
-    ],
+    ]
   },
 
   resolveLoader: {
@@ -43,4 +43,4 @@ export default {
   eslint,
 
   profile: config.argv.profile
-}
+};

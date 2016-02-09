@@ -1,6 +1,4 @@
-import webpack from 'webpack'
-
-import config from '../../../config';
+import webpack from 'webpack';
 
 const modules = {
   React: 'react',
@@ -13,4 +11,4 @@ export default [
   new webpack.ProvidePlugin(modules),
   new webpack.optimize.OccurenceOrderPlugin(true),
   new webpack.optimize.DedupePlugin()
-]
+];

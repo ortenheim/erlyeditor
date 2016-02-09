@@ -6,4 +6,4 @@ const eslint = {
   loader: 'eslint'
 };
 
-export default [eslint]
+export default [eslint];

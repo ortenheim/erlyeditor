@@ -1,44 +1,55 @@
 import React, { PropTypes } from 'react';
-import styleable from 'react-styleable';
+import css from 'react-css-modules';
 import cn from 'classnames';
 
+import tooltip from '../../../hoc/tooltip';
 import Button from '../../../Button';
 import styles from './styles';
 
-const { bool, string, func, object, node } = PropTypes;
+const TooltipButton = tooltip(Button);
+const { bool, string, func, node } = PropTypes;
 
 export const Options = (props) => {
   const {
     children,
-    css,
     className,
     buttonClassName,
     buttonOnClassName,
     buttonOffClassName,
-    repeat,
-    onToggleRepeat,
+    error,
+    loop,
+    onToggleDebugMonitor,
+    onToggleLoop,
     onToggleFullScreen
   } = props;
 
-  const repeatButtonClass = cn(
-    buttonClassName,
-    repeat ? buttonOnClassName : buttonOffClassName,
-    repeat ? css.buttonOn : css.buttonOff
-  );
-  const fullScreenButtonClass = cn(
-    buttonClassName,
-    css.buttonFullScreen
-  );
-
-  if (!onToggleRepeat && !onToggleFullScreen) return null;
+  const loopButtonClasses = loop ?
+    [buttonOnClassName, styles.buttonOn] :
+    [buttonOffClassName, styles.buttonOff];
 
   return (
-    <div className={cn(className, css.options)}>
-      <Button className={repeatButtonClass}
+    <div className={className} styleName='options'>
+      {__DEVELOPMENT__ &&
+        <TooltipButton icon='bug_report'
+          filled raised circle small
+          disabled={error}
+          className={styles.buttonDebug}
+          tooltipText='toggle debug monitor'
+          tooltipDelay={1200}
+          onClick={onToggleDebugMonitor}
+        />
+      }
+      <TooltipButton className={cn(...loopButtonClasses)}
+        disabled={error}
         icon='repeat'
-        onClick={onToggleRepeat}
+        tooltipText='toogle repeat'
+        tooltipDelay={500}
+        onClick={onToggleLoop}
       />
-      <Button className={fullScreenButtonClass}
+      <TooltipButton className={cn(buttonClassName, styles.buttonFullScreen)}
+        disabled={error}
+        tooltipText='toggle fullscreen'
+        tooltipDelay={500}
         icon='fullscreen'
         onClick={onToggleFullScreen}
       />
@@ -50,15 +61,15 @@ export const Options = (props) => {
 
 Options.propTypes = {
   children: node,
-  css: object.isRequired,
   className: string,
   buttonClassName: string,
   buttonOnClassName: string,
   buttonOffClassName: string,
-
-  repeat: bool.isRequired,
-  onToggleRepeat: func,
-  onToggleFullScreen: func
+  error: bool,
+  loop: bool.isRequired,
+  onToggleDebugMonitor: func,
+  onToggleLoop: func.isRequired,
+  onToggleFullScreen: func.isRequired
 };
 
-export default styleable(styles)(Options);
+export default css(Options, styles, { allowMultiple: true });

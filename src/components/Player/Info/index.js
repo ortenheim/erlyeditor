@@ -1,22 +1,22 @@
 import React, { PropTypes } from 'react';
-import styleable from 'react-styleable';
+import css from 'react-css-modules';
 
 import styles from './styles';
 
-const { object } = PropTypes;
+const { string } = PropTypes;
 
 export const Info = (props) => {
-  const { css } = props;
+  const { className } = props;
 
   return (
-    <div className={css.info}>
+    <div className={className} styleName='info'>
     </div>
   );
 };
 
 
 Info.propTypes = {
-  css: object.isRequired
+  className: string
 };
 
-export default styleable(styles)(Info);
+export default css(Info, styles, { allowMultiple: true });

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
-import styleable from 'react-styleable';
-import { spring, Motion, presets } from 'react-motion';
+import css from 'react-css-modules';
+import cn from 'classnames';
+import { spring, Motion } from 'react-motion';
 
 import Playback from './Playback';
 import Options from './Options';
@@ -8,23 +9,27 @@ import Volume from './Volume';
 
 import styles from './styles';
 
-const { bool, number, object, func } = PropTypes;
+const { bool, number, string, func } = PropTypes;
 
 export const Controls = (props) => {
   const {
-    css,
+    className,
     visible,
-    playing,
+    error,
+    paused,
     muted,
+    playbackRate,
     volume,
-    repeat,
+    loop,
+    onToggleDebugMonitor,
     onTogglePlay,
+    onToggleMute,
     onVolumeChange,
     onPrevious,
     onNext,
     onDecreasePlaybackRate,
     onIncreasePlaybackRate,
-    onToggleRepeat,
+    onToggleLoop,
     onToggleFullScreen
   } = props;
 
@@ -37,34 +42,44 @@ export const Controls = (props) => {
   };
 
   const animationStyle = {
-    opacity: spring(visible ? 1 : 0, presets.stiff)
+    opacity: spring(visible ? 1 : 1, { stiffness: 500, damping: 40 })
   };
 
   return (
     <Motion style={animationStyle}>{s =>
-      <div className={css.controls} style={s}>
-        {onTogglePlay && <Playback playing={playing} { ...playbackHandlers } />}
-        <Options { ...{ repeat, onToggleRepeat, onToggleFullScreen } } />
-        {onVolumeChange && <Volume { ...{ muted, volume, onVolumeChange } } />}
+      <div className={cn(className, styles.controls)} style={s}>
+        {onTogglePlay &&
+          <Playback { ...{ ...{ error, paused, playbackRate }, ...playbackHandlers } } />
+        }
+        {onToggleLoop && onToggleFullScreen &&
+          <Options { ...{ error, loop, onToggleDebugMonitor, onToggleLoop, onToggleFullScreen } } />
+        }
+        {onVolumeChange && onToggleMute &&
+          <Volume { ...{ error, muted, volume, onToggleMute, onVolumeChange } } />
+        }
       </div>
     }</Motion>
   );
 };
 
 Controls.propTypes = {
-  css: object.isRequired,
+  className: string,
   visible: bool,
-  playing: bool,
+  error: bool,
+  paused: bool,
   muted: bool,
+  playbackRate: number,
   volume: number,
-  repeat: bool,
+  loop: bool,
+  onToggleDebugMonitor: func,
   onTogglePlay: func,
+  onToggleMute: func,
   onVolumeChange: func,
   onPrevious: func,
   onNext: func,
   onDecreasePlaybackRate: func,
   onIncreasePlaybackRate: func,
-  onToggleRepeat: func,
+  onToggleLoop: func,
   onToggleFullScreen: func
 };
 
@@ -72,4 +87,4 @@ Controls.defaultProps = {
   visible: true
 };
 
-export default styleable(styles)(Controls);
+export default css(Controls, styles, { allowMultiple: true });

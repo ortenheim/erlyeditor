@@ -1,16 +1,20 @@
 import React, { PropTypes } from 'react';
-import styleable from 'react-styleable';
-import classNames from 'classnames';
+import css from 'react-css-modules';
 
 import Button from '../../../Button';
+import tooltip from '../../../hoc/tooltip';
+
 import styles from './styles';
 
-const { bool, string, object, func } = PropTypes;
+const TooltipButton = tooltip(Button);
+const { bool, number, string, func } = PropTypes;
 
 export const Playback = (props) => {
   const {
-    css, className,
-    playing,
+    className,
+    error,
+    paused,
+    playbackRate,
     onTogglePlay,
     onPrevious,
     onNext,
@@ -19,20 +23,54 @@ export const Playback = (props) => {
   } = props;
 
   return (
-    <div className={classNames(className, css.playback)}>
-      {onPrevious && <Button icon='skip_previous' onClick={onPrevious} />}
-      {onDecreasePlaybackRate && <Button icon='fast_rewind' onClick={onDecreasePlaybackRate} />}
-      <Button icon={playing ? 'pause' : 'play_arrow'} onClick={onTogglePlay} />
-      {onIncreasePlaybackRate && <Button icon='fast_forward' onClick={onIncreasePlaybackRate} />}
-      {onNext && <Button icon='skip_next' onClick={onNext} />}
+    <div className={className} styleName='playback'>
+      {onPrevious &&
+        <TooltipButton filled disabled
+          tooltipText='previous'
+          delay={1000}
+          icon='skip_previous'
+          onClick={onPrevious}
+        />
+      }
+      {onDecreasePlaybackRate &&
+        <TooltipButton filled
+          tooltipText='descrease playback rate'
+          delay={1000}
+          disabled={error || playbackRate < 0.5}
+          icon='fast_rewind'
+          onClick={onDecreasePlaybackRate}
+        />
+      }
+      <Button disabled={error}
+        icon={paused ? 'play_arrow' : 'pause' }
+        onClick={onTogglePlay}
+      />
+      {onIncreasePlaybackRate &&
+        <TooltipButton filled
+          tooltipText='increase playback rate'
+          delay={1000}
+          disabled={error || playbackRate > 3.75}
+          icon='fast_forward'
+          onClick={onIncreasePlaybackRate}
+        />
+      }
+      {onNext &&
+        <TooltipButton filled disabled
+          tooltipText='next'
+          delay={1000}
+          icon='skip_next'
+          onClick={onNext}
+        />
+      }
     </div>
   );
 };
 
 Playback.propTypes = {
-  css: object.isRequired,
   className: string,
-  playing: bool.isRequired,
+  error: bool,
+  paused: bool,
+  playbackRate: number,
   onTogglePlay: func.isRequired,
   onPrevious: func,
   onNext: func,
@@ -40,4 +78,4 @@ Playback.propTypes = {
   onIncreasePlaybackRate: func
 };
 
-export default styleable(styles)(Playback);
+export default css(Playback, styles, { allowMultiple: true });

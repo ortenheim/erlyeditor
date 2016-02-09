@@ -18,6 +18,7 @@ const alias = {
 
 debug('module:webpack:aliases')(prettyjson(alias));
 
+/* eslint-disable quote-props */
 const externals = {
   'react': {
     root: 'React',
@@ -31,10 +32,13 @@ const externals = {
   'redux-act': 'commonjs redux-act',
   'redux-thunk': 'commonjs redux-thunk',
   'reselect': 'commonjs reselect',
+  'reduce-reducers': 'commonjs reduce-reducers',
   'classnames': 'commonjs classnames',
   'lodash': 'commonjs lodash',
-  'core-decorators': 'commonjs core-decorators'
+  'core-decorators': 'commonjs core-decorators',
+  'react-css-modules': 'commonjs react-css-modules'
 };
+/* eslint-enable quote-props */
 
 export default {
   name,
@@ -52,7 +56,7 @@ export default {
       '.js',
       '.css',
       '.json'
-    ],
+    ]
   },
 
   resolveLoader: {

@@ -1,5 +1,3 @@
-'use strict';
-
 require('dotenv').load();
 
 require('./logging.js');

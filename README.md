@@ -29,6 +29,39 @@ A simple video editing tool. Test assignment for Erlyvideo. WIP.
 
 # Usage
 
+#### Intro
+
+ `erlyeditor` primarily consists of two things:
+ * Redux reducers: `playerReducer` and `html5videoReducer`.
+ * React components: `Html5Video` and `Player`.
+
+The reducers listen to dispatched actions from the component to maintain your state in Redux.
+
+#### Setup
+
+##### Step
+
+The first thing that you have to do is to give the player and video reducers to Redux.
+```
+import { foo, bar } from 'my-awesome-reducers';
+import { editorReducer as editor } from 'erlyeditor';
+
+const reducers = {
+  // ... your other reducers here ...
+  editor, // <- mounting editor reducer
+};
+
+const reducer = combineReducers(reducers);
+const store = createStore(reducer);
+```
+
+The default mount point for `editorReducer` is `editor`.
+
+**NOTE**:
+
+It won't work if you change mounting point.
+Right now you can't change this, so be carefull.
+
 #### Roboto Font and Material Design Icons
 
 ErlyEditor assumes that you are importing Roboto Font and Material Design Icons.
@@ -39,7 +72,22 @@ If you are not including them in your app go to the linked sites and follow the 
 
 Almost any component allows use to specify className which will be applied to it
 via composition with existing built-in className. Additionally you can override
-built-in styles because everything is based on the [react-styleable](https://github.com/pluralsight/react-styleable).
+built-in styles because everything is based on the [react-css-modules](https://github.com/gajus/react-css-modules).
+You need to export unstyled version of component to provide your own styles, to
+do this simple `import { QuxComponent } from 'erlyeditor/components/QuxComponent';` instead of importing the default one.
+
+#### Components
+
+Also you can use other components as well:
+
+* `Html5Video`
+* `Player`
+* `Button`
+* `Slider`
+
+Every component is exported in 2 different ways:
+* To import *unstyled* version use `import { FooComponent } from erlyeditor`
+* To import *styled* use `import FooComponent from 'erlyeditor`
 
 # Development
 
@@ -136,7 +184,7 @@ Packages I use for testing:
 Make sure that you've read this [npm-module-checklist](https://github.com/bahmutov/npm-module-checklist) before
 starting to build your own npm package.
 
-* [react-styleable](https://github.com/pluralsight/react-styleable) - React Component for portable styles.
+* [react-css-modules](https://github.com/gajus/react-css-modules) - Seamless mapping of class names to CSS modules inside of React components.
 
 ## Ideas
 

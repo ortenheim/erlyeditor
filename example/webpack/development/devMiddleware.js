@@ -4,10 +4,10 @@ export default {
   publicPath: '/',
   headers: { 'Access-Control-Allow-Origin': '*' },
   watchOptions: {
-    // polling always just works,
-    // everywhere, anytime
-    poll: true,
-    aggregateTimeout: 0
+    // polling always just works, everywhere, anytime,
+    // but east your CPU! be carefull ^__^
+    poll: false,
+    aggregateTimeout: 100
   },
   stats: {
     children: false,
@@ -24,7 +24,7 @@ export default {
   // set this to true and you'll see no error output in the console
   // and it will make much harder to know whats wrong
   quiet: argv.quiet
-}
+};
 
 // for other settings see
 // http://webpack.github.io/docs/webpack-dev-middleware.html

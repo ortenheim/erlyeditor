@@ -27,4 +27,4 @@ export default [
     include: [paths.src],
     loader: 'babel'
   }
-]
+];

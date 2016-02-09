@@ -16,7 +16,7 @@ const argv = parseArgs();
 const { environments, environmentName } = env(argv);
 
 export default {
-  argv, 
+  argv,
 
   name,
   description,
@@ -35,4 +35,4 @@ export default {
   environment: environmentName,
 
   ...config
-}
+};

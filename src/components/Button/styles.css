@@ -10,8 +10,9 @@
 
   --button-hover-background: color(var(--button-normal-background) tint(5%));
 
-  --button-disabled-background: color(var(--button-normal-background) a(12%));
-  --button-disabled-text-color: color(var(--button-normal-text-color) a(26%));
+  --button-disabled-background: color(var(--button-normal-background) a(5%));
+  --button-disabled-filled-text-color: color(var(--button-normal-text-color) a(10%));
+  --button-disabled-neutral-text-color: color(var(--button-normal-text-color) a(60%));
 }
 
 .button {
@@ -30,35 +31,43 @@
   font-weight: 500;
   border: 0;
   outline: none;
-
-  &:hover { background-color: var(--button-hover-background); }
+  background-color: transparent;
 }
 
 .enabled {
-  composes: button;
   cursor: pointer;
-  background-color: var(--button-normal-background);
   color: var(--button-normal-text-color);
+
+  &:hover { color: color(var(--button-normal-text-color) shade(50%)); }
 }
 
 .disabled {
-  composes: button;
   pointer-events: none;
   cursor: auto;
-  background-color: var(--button-disabled-background);
-  color: var(--button-disabled-text-color);
+  color: var(--button-disabled-neutral-text-color);
 }
 
 .neutral {
 }
 
+.filled {
+  background-color: var(--button-normal-background);
+  &:hover { background-color: var(--button-hover-background); }
+}
+
+.disabled.filled {
+  background-color: var(--button-disabled-background);
+  color: var(--button-disabled-filled-text-color);
+}
+
 .squared {
-  composes: neutral;
-  border-radius: var(--button-squared-border-radius);
 }
 
 .rounded {
-  composes: neutral;
+  border-radius: var(--button-squared-border-radius);
+}
+
+.circle {
   border-radius: 50%;
   box-shadow:
     0 1px 1.5px 0 rgba(#000, 0.12),
@@ -75,14 +84,9 @@
     0 1px 5px 0 rgba(#000, 0.12);
 }
 
-.small {
-}
-
-.normal {
-}
-
-.big {
-}
+.small { size: 3.6rem; }
+.normal { size: 4.8rem; }
+.big { size: 9rem; }
 
 .content {
   display: inline-block;

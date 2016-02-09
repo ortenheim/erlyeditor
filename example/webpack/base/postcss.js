@@ -26,7 +26,6 @@ export default (bundler) => [
   require('postcss-assets')(assets),
   require('postcss-font-magician')(fontMagician),
   require('postcss-size'),
-  require('postcss-focus'),
   require('postcss-position'),
   require('postcss-easings'),
   require('postcss-hexrgba'),

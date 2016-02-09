@@ -25,3 +25,18 @@
   /* Support for IE. */
   font-feature-settings: "liga";
 }
+
+.small {
+  composes: icon;
+  font-size: 1.6rem;
+}
+
+.normal {
+  composes: icon;
+  font-size: 2.4rem;
+}
+
+.big {
+  composes: icon;
+  font-size: 7rem;
+}

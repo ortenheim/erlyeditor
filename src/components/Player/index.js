@@ -1,13 +1,13 @@
-import { autobind } from 'core-decorators';
-import throttle from 'lodash/throttle';
+import clamp from 'lodash/clamp';
 import React, { Component, PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import styleable from 'react-styleable';
+import css from 'react-css-modules';
 
-import * as actions from '../../modules/player/actions';
-import selector from '../../modules/player/selector';
-import * as storage from '../../lib/storage';
+import {
+  videoProps,
+  videoAPIType,
+  playbackRateType,
+  playerActionsType
+} from '../propTypes';
 
 import HUD from './HUD';
 import Info from './Info';
@@ -17,232 +17,97 @@ import Controls from './Controls';
 
 import styles from './styles';
 
-const {
-  bool, number, string,
-  object, func, shape
-} = PropTypes;
+const { bool, number, string, node, shape } = PropTypes;
 
 export class Player extends Component {
   static propTypes = {
-    autoPlay: bool,
-    autoBuffer: bool,
-    controls: bool,
-    muted: bool,
-    repeat: bool,
-    volume: number,
-    src: string,
-    poster: string,
+    className: string,
+    children: node.isRequired,
 
+    debug: bool,
     width: number,
     height: number,
-    css: object.isRequired,
+    playbackRate: playbackRateType,
 
-    source: string,
-    playing: bool,
+    actions: playerActionsType.isRequired,
 
-    actions: shape({
-      togglePlay: func,
-      stop: func,
-      next: func,
-      previous: func,
-      updateTime: func,
-      seek: func
-    }).isRequired
+    video: shape(videoProps).isRequired,
+    api: videoAPIType
   };
 
   static defaultProps = {
-    autoPlay: false,
-    autoBuffer: false,
-    controls: true,
-    muted: false,
-    repeat: false,
-    volume: 0.5,
-
+    debug: Boolean(__DEVELOPMENT__),
     width: 640,
-    height: 480
+    height: 480,
+    playbackRate: {
+      step: 0.25,
+      min: 0.25,
+      max: 4
+    }
   };
 
-  state = {
-    autoPlay: storage.load('player.video.autoPlay', this.props.autoPlay),
-    autoBuffer: storage.load('player.video.autoBuffer', this.props.autoBuffer),
-    controls: storage.load('player.video.controls', this.props.controls),
-    muted: storage.load('player.video.muted', this.props.muted),
-    repeat: storage.load('player.video.repeat', this.props.repeat),
-    volume: storage.load('player.video.volume', this.props.volume),
-    focused: false,
-    seeking: false,
-
-    loading: false,
-    error: false,
-    networkState: 0,
-    duration: 0,
-    currentTime: 0,
-    buffered: false,
-    readyState: null
-  };
-
-  componentWillMount() {
-    this.updateStateThrottled = throttle(this.updateState, 100);
-  }
-
-  componentDidMount() {
-    this.video.addEventListener('pause', this.handlePause);
-    this.video.addEventListener('play', this.handlePlay);
-    this.video.addEventListener('volumechange', this.handleVolumeChange);
-
-    this.video.volume = this.state.volume;
-  }
-
-  componentWillUnmount() {
-    this.video.removeEventListener('pause', this.handlePause);
-    this.video.removeEventListener('play', this.handlePlay);
-    this.video.removeEventListener('volumechange', this.handleVolumeChange);
-  }
-
-  @autobind
-  updateState() {
-  }
+  state = { focused: false };
 
   focus = () => this.setState({ focused: true });
   unfocus = () => this.setState({ focused: false });
 
-  handlePause = () => this.props.actions.togglePlay(false);
-  handlePlay = () => this.props.actions.togglePlay(true);
+  decreasePlaybackRate = () => this.setPlaybackRate(-1);
+  increasePlaybackRate = () => this.setPlaybackRate(+1);
 
-  handleSeekStart = () => this.setState({ seeking: true });
-  handleSeekEnd = () => this.setState({ seeking: false });
-
-  handleVolumeChange = (e) => {
-    const volume = e.currentTarget.volume;
-    storage.save('player.video.volume', volume);
-    this.setState({ volume });
+  setPlaybackRate = factor => {
+    const { api, video, playbackRate: { min, max, step } } = this.props;
+    const value = clamp(video.playbackRate + step * factor, min, max);
+    api.setPlaybackRate(value);
   };
 
-  @autobind
-  changeVolume(volume) {
-    this.video.volume = volume;
-  }
+  renderContainer() {
+    if (!React.Children.count) return null;
 
-  @autobind
-  seek(offset) {
-    this.props.actions.seek(offset);
-    this.video.currentTime = offset;
-  }
+    const { children, debug, api, video } = this.props;
+    const { focused } = this.state;
 
-  @autobind
-  togglePlay() {
-    if (this.props.playing) {
-      this.video.pause();
-    } else {
-      this.video.play();
-    }
-  }
-
-  @autobind
-  playPrevious() {
-  }
-
-  @autobind
-  playNext() {
-  }
-
-  @autobind
-  decreasePlaybackRate() {
-  }
-
-  @autobind
-  increasePlaybackRate() {
-  }
-
-  @autobind
-  toggleMute() {
-    const muted = !this.state.muted;
-    this.video.muted = muted;
-    this.setState({ muted });
-    storage.save('player.video.muted', muted);
-  }
-
-  @autobind
-  toggleRepeat() {
-    const repeat = !this.state.repeat;
-    this.setState({ repeat });
-    storage.save('player.video.repeat', repeat);
-  }
-
-  @autobind
-  toggleFullScreen() {
-    if (this.video.requestFullscreen) {
-      this.video.requestFullscreen();
-    } else if (this.video.msRequestFullscreen) {
-      this.video.msRequestFullscreen();
-    } else if (this.video.mozRequestFullScreen) {
-      this.video.mozRequestFullScreen();
-    } else if (this.video.webkitRequestFullscreen) {
-      this.video.webkitRequestFullscreen();
-    }
+    return (
+      <div styleName='container'>
+        {children}
+        <Overlay {...video} debug={debug} onTogglePlay={api.togglePlay}>
+          <HUD {...video} focused={focused} />
+        </Overlay>
+      </div>
+    );
   }
 
   render() {
-    const {
-      css,
-      autoPlay,
-      autoBuffer,
-      src,
-      poster,
-      controls,
-      width,
-      height,
-      playing,
-      source
-    } = this.props;
-
-    const {
-      focused, seeking, duration,
-      muted, repeat, volume
-    } = this.state;
-
-    const containerHandlers = {
-      onFocus: this.focus,
-      onBlur: this.unfocus,
-      onMouseOver: this.focus,
-      onMouseLeave: this.unfocus
-    };
+    const { className, width, height, actions, video, api } = this.props;
+    const { focused } = this.state;
 
     return (
-      <div className={css.player}
+      <div className={className}
+        styleName='player'
         style={{ width, height }}
-        {...containerHandlers}>
-        <video className={css.video}
-          src={src || source}
-          ref={ref => this.video = ref}
-          {...{ autoPlay, autoBuffer, poster }} />
-        <Overlay playing={playing}>
-          <HUD playing={playing} onTogglePlay={this.togglePlay} />
-        </Overlay>
-        <SeekBar seeking={seeking} />
-        <Info { ...{ playing, duration } } />
-        {controls &&
-          <Controls
-            visible={focused}
-            { ...{ playing, muted, volume, repeat } }
-            onTogglePlay={this.togglePlay}
-            onVolumeChange={this.changeVolume}
-            onPrevious={this.playPrevious}
-            onNext={this.playNext}
-            onDecreasePlaybackRate={this.decreasePlaybackRate}
-            onIncreasePlaybackRate={this.increasePlaybackRate}
-            onToggleRepeat={this.toggleRepeat}
-            onToggleFullScreen={this.toggleFullScreen}
-          />
-        }
+        onMouseEnter={this.focus}
+        onMouseLeave={this.unfocus}>
+        {this.renderContainer()}
+        <SeekBar {...video}
+          disabled={Boolean(video.error)}
+          step={1}
+          onSeek={api.seek}
+        />
+        <Info />
+        <Controls {...video}
+          error={Boolean(video.error)}
+          visible={focused}
+          onToggleDebugMonitor={actions.toggleDebugMonitor}
+          onVolumeChange={api.setVolume}
+          onTogglePlay={api.togglePlay}
+          onToggleMute={api.toggleMute}
+          onToggleLoop={api.toggleLoop}
+          onToggleFullScreen={api.toggleFullScreen}
+          onDecreasePlaybackRate={this.decreasePlaybackRate}
+          onIncreasePlaybackRate={this.increasePlaybackRate}
+        />
       </div>
     );
   }
 }
 
-function selectActions(dispatch) {
-  return { actions: bindActionCreators(actions, dispatch) };
-}
-
-export const StyledPlayer = styleable(styles)(Player);
-export default connect(selector, selectActions)(StyledPlayer);
+export default css(Player, styles, { allowMultiple: true });
