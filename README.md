@@ -39,7 +39,7 @@ The reducers listen to dispatched actions from the component to maintain your st
 
 #### Setup
 
-##### Step
+##### Step 1
 
 The first thing that you have to do is to give the player and video reducers to Redux.
 ```
@@ -61,6 +61,21 @@ The default mount point for `editorReducer` is `editor`.
 
 It won't work if you change mounting point.
 Right now you can't change this, so be carefull.
+
+#### Step 2
+
+Import and render the `Editor` component:
+
+```
+import { Editor } from 'erlyeditor';
+
+...
+
+// somewhere in your rendering method
+
+<Editor player={{ width: 640, height: 480 }} />
+
+```
 
 #### Roboto Font and Material Design Icons
 
@@ -85,7 +100,7 @@ Also you can use other components as well. Here is the full list:
 * `Icon`
 * `Button`
 * `Slider`
-* `hoc/Tooltip` - high-order component for tooltips
+* `hoc/tooltip` - high-order component for tooltips
 
 Every component is exported in 2 different ways:
 * To import *unstyled* version use `import { FooComponent } from erlyeditor`
