@@ -29,6 +29,7 @@ mp4/h264/aac ( https://peach.blender.org/download/ h264 moov подойдет )
   Реализация яваскрипт-кода ожидается на React.js   Кроссплатформенность не
   требуется, можно выбрать браузер.
 
+CAVEATS:
 
 - [ ] don't use spread props transfering with react-css-modules cuz https://github.com/gajus/react-css-modules/issues/58
 - [ ] react-css-modules styleName attribute doesn't work when there is a Motion parent component (from react-motion)

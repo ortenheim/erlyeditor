@@ -14,11 +14,27 @@ A simple video editing tool. Test assignment for Erlyvideo. WIP.
 
 # Table of contents
 
+- [ErlyEditor](#erlyeditor)
+- [Table of contents](#table-of-contents)
 - [Prerequisites](#prerequisites)
+- [Usage](#usage)
+      - [Intro](#intro)
+      - [Setup](#setup)
+        - [Step](#step)
+      - [Roboto Font and Material Design Icons](#roboto-font-and-material-design-icons)
+      - [Customization](#customization)
+      - [Components](#components)
 - [Development](#development)
+    - [Building](#building)
+      - [Build erlyeditor](#build-erlyeditor)
+    - [Testing and Linting](#testing-and-linting)
+    - [Examples](#examples)
+      - [Building and testing the examples](#building-and-testing-the-examples)
+      - [Tools](#tools)
 - [Testing](#testing)
-- [Examples](#examples)
 - [Resources](#resources)
+  - [Ideas](#ideas)
+    - [Implementing FlashVideo component](#implementing-flashvideo-component)
 
 # Prerequisites
 
@@ -105,6 +121,8 @@ Also you can use other components as well. Here is the full list:
 Every component is exported in 2 different ways:
 * To import *unstyled* version use `import { FooComponent } from erlyeditor`
 * To import *styled* use `import FooComponent from 'erlyeditor`
+
+There is no `FlashVideo` component, unfortunately. See below
 
 # Development
 
@@ -208,3 +226,11 @@ starting to build your own npm package.
 Check this out: [react-gl](https://github.com/ProjectSeptemberInc/gl-react).
 [One of the examples](http://projectseptemberinc.github.io/gl-react-dom/Examples/VideoBlur/) places canvas over `video` to apply blurring and customize HUE.
 This technique makes possible to implement really cool effects.
+
+### Implementing FlashVideo component
+
+To get some inspiration how to create a unified API for HTML5 & Flash player see
+* [videojs](https://github.com/videojs/video.js)
+* [video-js-swf](https://github.com/videojs/video-js-swf)
+* [video-js-swf external interface](https://github.com/videojs/video-js-swf/blob/eca37f3bc78bb1e3915b036a5714b3caec5dd0a3/src/VideoJS.as#L68)
+* [videojs, the controller part](https://github.com/videojs/video.js/blob/b1e863677fdd622a91aad8207358a3194d7d5a21/src/js/tech/flash.js#L26)
