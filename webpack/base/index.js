@@ -36,7 +36,9 @@ const externals = {
   'classnames': 'commonjs classnames',
   'lodash': 'commonjs lodash',
   'core-decorators': 'commonjs core-decorators',
-  'react-css-modules': 'commonjs react-css-modules'
+  'react-css-modules': 'commonjs react-css-modules',
+  'react-swf': 'commonjs react-swf',
+  'react-hotkeys': 'commonjs react-hotkeys'
 };
 /* eslint-enable quote-props */
 
